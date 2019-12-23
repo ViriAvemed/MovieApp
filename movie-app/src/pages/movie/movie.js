@@ -1,10 +1,13 @@
-import React, {useState} from "react";
-import { Row, Col, Button } from "react-bootstrap";
+import React from "react";
+import {Row, Col} from "react-bootstrap";
 import { useParams } from 'react-router-dom';
 import useFetch from '../../hooks/fetch'
 import { URL_API, API } from "../../utils/constants";
 import './movie.scss';
-import ModalVideo from "../../components/ModalVideo";
+import Spinner from "react-bootstrap/Spinner";
+import allActions from "../../actions";
+import { useDispatch} from 'react-redux'
+
 
 const Movie = () => {
 
@@ -13,8 +16,9 @@ const Movie = () => {
         `${URL_API}/movie/${id}?api_key=${API}&language=es-ES`
     );
 
+
     if(movieInfo.loading || !movieInfo.result){
-        return 'Loading...';
+        return <Spinner animation="grow" />;
     }
 
     return <RenderMovie movieInfo={movieInfo.result}/>;
@@ -24,6 +28,7 @@ const RenderMovie =(props)=> {
     const {
         movieInfo: { backdrop_path, poster_path}
     } = props;
+    // const counter = useSelector(state => state.counter)
     const backdropPath =`http://image.tmdb.org/t/p/original${backdrop_path}`;
 
 
@@ -52,33 +57,10 @@ const PosterMovie=(props)=> {
 };
 
 const MovieInfo =(props)=> {
-    const { movieInfo: {id, release_date, overview, genres, title} }= props;
-    const [isVisibleModal, setIsVisibleModal] = useState(false);
-    const videoMovie = useFetch(
-        `${URL_API}/movie/${id}/videos?a[i_key=${API}&language=es-Es`
-    );
+    const { movieInfo: { release_date, overview, genres, title,vote_average, original_language, runtime, revenue, budget} }= props;
 
-    const openModal = () => setIsVisibleModal(true);
-    const closeModal =() => setIsVisibleModal(false);
+    const dispatch = useDispatch();
 
-    const renderVideo =()=> {
-        if(videoMovie.result){
-            if(videoMovie.result.results.length > 0) {
-                return (
-                    <>
-                    <Button variant="outline-primary" onClick={openModal}>Ver trailer</Button>
-                    <ModalVideo videoKey={videoMovie.result.results[0].key}
-                    videoPlatform={videoMovie.result.results[0].site}
-                    isOpen={isVisibleModal
-                        close={closeModal}>
-
-                        </ModalVideo>
-                        </>
-
-                )
-            }
-        }
-    };
 
     return (
         <Row className="movie_info-header">
@@ -86,16 +68,18 @@ const MovieInfo =(props)=> {
                 {title}
                 <span>{release_date}</span>
             </h1><br/>
-
-            <ModalVideo />
             <div className="movie_info-content">
                 <h3>General</h3>
+                <p>Calificación: {vote_average}    | Duración: {runtime} min.  |  Idioma de origen: {original_language} </p>
+                <p>Presupuesto: ${budget}    | Recaudación: ${revenue}</p>
+                <h3>Sipnosis: </h3>
                 <p>{overview}</p>
                 <h3>Generos</h3>
                 <ul>{genres.map(genre =>
                     <li key={genre.id}>{genre.name}</li>
                 )}
                 </ul>
+                <button className="btn btn-light btn-lg bg-white" onClick={() => dispatch(allActions.counterActions.increment({"title":title}))}>Agregar a Favoritas</button>
 
             </div>
 
