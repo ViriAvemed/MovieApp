@@ -1,5 +1,5 @@
 import React from "react";
-import {Row, Col} from "react-bootstrap";
+import {Row, Col, Button} from "react-bootstrap";
 import { useParams } from 'react-router-dom';
 import useFetch from '../../hooks/fetch'
 import { URL_API, API } from "../../utils/constants";
@@ -13,7 +13,7 @@ const Movie = () => {
 
     const {id} = useParams();
     const movieInfo = useFetch(
-        `${URL_API}/movie/${id}?api_key=${API}&language=es-ES`
+        `${URL_API}/movie/${id}?api_key=${API}&language=es-MX`
     );
 
 
@@ -36,10 +36,10 @@ const RenderMovie =(props)=> {
         <Row className="movie" style={{backgroundImage: `url('${backdropPath}')`}}>
             <div className="movie_dark">
                 <Row className="row-poster">
-                    <Col md={{ span: 5, offset: 1 }}  className="movie_poster">
+                    <Col md={{ span:5}}  className="movie_poster">
                         <PosterMovie image={poster_path}/>
                     </Col>
-                    <Col md={{ span: 5}} className="movie_info mr-3">
+                    <Col md={{ span:6}} className="movie_info mr-3">
                         <MovieInfo movieInfo={props.movieInfo}/>
                     </Col>
                 </Row>
@@ -64,24 +64,31 @@ const MovieInfo =(props)=> {
 
     return (
         <Row className="movie_info-header">
-            <h1>
-                {title}
-                <span>{release_date}</span>
-            </h1><br/>
-            <div className="movie_info-content">
-                <h3>General</h3>
-                <p>Calificación: {vote_average}    | Duración: {runtime} min.  |  Idioma de origen: {original_language} </p>
-                <p>Presupuesto: ${budget}    | Recaudación: ${revenue}</p>
-                <h3>Sipnosis: </h3>
-                <p>{overview}</p>
-                <h3>Generos</h3>
-                <ul>{genres.map(genre =>
-                    <li key={genre.id}>{genre.name}</li>
-                )}
-                </ul>
-                <button className="btn btn-light btn-lg bg-white" onClick={() => dispatch(allActions.counterActions.increment({"title":title}))}>Agregar a Favoritas</button>
+            <Row>
+                <Col>
+                    <h1>
+                        {title}{" "}{" "}
+                        <Button variant="outline-warning" onClick={() => dispatch(allActions.counterActions.increment({"title":title}))}>Agregar a Favoritas</Button>
+                    </h1>
+                    <span>{release_date}</span>
+                </Col>
+            </Row>
+            <Row>
+                <Col>
+                    <div className="movie_info-content">
+                        <p>Calificación: {vote_average}    | Duración: {runtime} min.  |  Idioma de origen: {original_language} </p>
+                        <p>Presupuesto: ${budget}    | Recaudación: ${revenue}</p>
+                        <h3>Sipnosis: </h3>
+                        <p>{overview}</p>
+                        <h3>Generos</h3>
+                        <ul>{genres.map(genre =>
+                            <li key={genre.id}>{genre.name}</li>
+                        )}
+                        </ul>
+                    </div>
+                </Col>
+            </Row>
 
-            </div>
 
         </Row>
     )

@@ -2,12 +2,12 @@ import React, {useEffect, useState} from "react";
 import { withRouter } from 'react-router-dom';
 import './Search.scss';
 import MovieCatalog from "../../components/MovieCatalog";
-import Footer from "../../components/Footer";
 import {URL_API, API} from "../../utils/constants";
 import queryString from "querystring";
-import {Row,Col, Button } from "react-bootstrap";
+import {Row, Col, Button, CardColumns} from "react-bootstrap";
 import InputGroup from "react-bootstrap/InputGroup";
 import FormControl from "react-bootstrap/FormControl";
+
 
 
 const Search=(props) => {
@@ -23,7 +23,7 @@ const Search=(props) => {
             const searchValue = queryString.parse(location.search);
             const  s  = searchValue['?s'];
             const response = await fetch(
-                `${URL_API}/search/movie?api_key=${API}&language=es-ES&query=${s}&page=1`
+                `${URL_API}/search/movie?api_key=${API}&language=es-MX&query=${s}&page=1`
             );
             const movies = await response.json();
             setSearchValue(s);
@@ -43,30 +43,30 @@ const Search=(props) => {
     return (
         <Row>
             <Col className="Search">
-                <h1>BUSCADOR DE PELÍCULAS</h1>
-                <InputGroup className="mb-3" >
-                    <FormControl onChange={onChangeSearch} value={searchValue}
-                        placeholder="Ingresa una palabra clave..."
-                        aria-label="Recipient's username"
-                        aria-describedby="basic-addon2"
-                    />
-                    <InputGroup.Append>
-                        <Button variant="outline-secondary"><img src="../../assets/img/lupa.png" alt=""/></Button>
-                    </InputGroup.Append>
-                </InputGroup>
-                {movieList.results && (
-                    <Row>
-                        <Col>
-                            <MovieCatalog movies={movieList}/>
-                        </Col>
-                    </Row>
-                )}
+                <h1 className="mb-3 mt-4 h1 text-center">BUSCADOR DE PELÍCULAS</h1>
+                <Row>
+                    <Col className="d-flex justify-content-center">
+                        <InputGroup className="Search-input mb-3 mt-4 w-75" size="lg">
+                            <FormControl onChange={onChangeSearch} value={searchValue}
+                                         placeholder="Ingresa una palabra clave..."
+                                         aria-label="Recipient's username"
+                                         aria-describedby="basic-addon2"
+                            />
+                            <InputGroup.Append>
+                                <Button variant="outline-secondary"><img src="../../assets/img/lupa.png" alt=""/></Button>
+                            </InputGroup.Append>
+                        </InputGroup>
+                    </Col>
 
-            </Col>
-            <Footer/>
+                </Row>
+                  <CardColumns style={{padding:'3% 10%'}} >
+                            {movieList.results && (
+                                <MovieCatalog movies={movieList}/>
+                            )}
+                  </CardColumns>
+             </Col>
         </Row>
     )
-
 };
 
 export default withRouter(Search);

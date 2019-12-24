@@ -14,7 +14,7 @@ const NewMovies = () => {
     useEffect( () => {
         (async () => {
             const response = await fetch(
-                `${URL_API}/movie/now_playing?api_key=${API}&language=es-ES&page=${page}`
+                `${URL_API}/movie/now_playing?api_key=${API}&language=es-MX&page=${page}`
             );
 
             const movies = await response.json();
@@ -30,7 +30,7 @@ const NewMovies = () => {
         <Row>
             <Row className="w-100">
                 <Col className="d-flex justify-content-center">
-                    <h1 className="text-center mt-5 mb-5">
+                    <h1 className="text-center mt-5 mb-5 h1">
                         ÚLTIMOS ESTRENOS
                     </h1>
                 </Col>

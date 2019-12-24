@@ -8,10 +8,10 @@ import { Link } from 'react-router-dom'
 const NavBar = () => {
     return (
         <Navbar collapseOnSelect expand="lg" className="nav-bar">
-            <Navbar.Brand>
+            <Navbar.Brand >
                 <img src="/assets/img/pelicula.png" alt="" className="nav-bar_logo"/>
             </Navbar.Brand>
-            <Navbar.Brand><p>MOVIES APP</p></Navbar.Brand>
+            <Navbar.Brand className="nav-title"><p>MOVIES APP</p></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav" className="basic-navbar " >
                 <Nav className="mr-auto">

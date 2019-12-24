@@ -13,7 +13,7 @@ const BestMovies = () => {
     useEffect( () => {
         (async () => {
             const response = await fetch(
-                `${URL_API}/movie/popular?api_key=${API}&language=es-ES&page=${page}`
+                `${URL_API}/movie/popular?api_key=${API}&language=es-MX&page=${page}`
             );
 
             const movies = await response.json();
@@ -29,8 +29,8 @@ const BestMovies = () => {
         <Row>
             <Row className="w-100">
                 <Col className="d-flex justify-content-center">
-                    <h1 className="text-center mt-5 mb-5">
-                        LAS PELÍCULAS MÁS POPULARES
+                    <h1 className="text-center mt-5 mb-5 h1">
+                        PELÍCULAS POPULARES
                     </h1>
                 </Col>
             </Row>

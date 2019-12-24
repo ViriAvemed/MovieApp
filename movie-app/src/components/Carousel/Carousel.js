@@ -41,8 +41,8 @@ const Movie =(props)=> {
 
     return (
         <div>
-            <img
-                className="d-block w-100"
+            <img style={{height:'100vh', width:'100vw'}}
+                className="d-block"
                 src={`${backdropPath}`}
                 alt=""
             />
