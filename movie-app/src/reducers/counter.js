@@ -1,11 +1,12 @@
-const counter = (state=[] , action) => {
+const counter = (
 
+    state = [] , action) => {
     if (action.data){
         state.push(action.data);
         switch(action.type){
-            case "INCREMENT":
+            case "ADD_MOVIE":
                 return state;
-            case "DECREMENT":
+            case "DELETE_MOVIE":
                 return state;
             default:
                 return state
@@ -13,7 +14,8 @@ const counter = (state=[] , action) => {
     }else {
         return state
     }
-
 };
 
-export default counter
+export default counter;
+
+

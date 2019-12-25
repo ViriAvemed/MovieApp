@@ -1,17 +1,18 @@
-const increment = (data) => {
+const addMovie = (data) => {
     return {
-        type: "INCREMENT",
-        data:data
+        type: "ADD_MOVIE",
+        data: data
     }
 };
 
-const decrement = () => {
+const deleteMovie = (id) => {
     return {
-        type: "DECREMENT"
+        type: "DELETE_MOVIE",
+        payload: id
     }
 };
 
 export default {
-    increment,
-    decrement
+    addMovie,
+    deleteMovie
 };

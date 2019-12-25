@@ -1,7 +1,8 @@
 import counterActions from './counterActions'
 
 const allActions = {
-    counterActions
+    counterActions,
+
 };
 
 export default allActions

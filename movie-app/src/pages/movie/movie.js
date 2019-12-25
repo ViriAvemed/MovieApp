@@ -9,6 +9,8 @@ import allActions from "../../actions";
 import { useDispatch} from 'react-redux'
 
 
+
+
 const Movie = () => {
 
     const {id} = useParams();
@@ -62,13 +64,14 @@ const MovieInfo =(props)=> {
     const dispatch = useDispatch();
 
 
+
     return (
-        <Row className="movie_info-header">
-            <Row>
+        <Row className="movie_info-header" >
+            <Row className="mt-5">
                 <Col>
-                    <h1>
+                    <h1 className="mt-5">
                         {title}{" "}{" "}
-                        <Button variant="outline-warning" onClick={() => dispatch(allActions.counterActions.increment({"title":title}))}>Agregar a Favoritas</Button>
+                        <Button variant="outline-warning" onClick={() => dispatch(allActions.counterActions.addMovie({"title":title}))}>Agregar a Favoritas</Button>
                     </h1>
                     <span>{release_date}</span>
                 </Col>
@@ -88,8 +91,6 @@ const MovieInfo =(props)=> {
                     </div>
                 </Col>
             </Row>
-
-
         </Row>
     )
 };

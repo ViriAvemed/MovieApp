@@ -1,44 +1,42 @@
-import React, {useEffect} from 'react';
-import {useSelector, useDispatch, } from 'react-redux'
+import React from 'react';
+import {useSelector, useDispatch,} from 'react-redux'
 import allActions from '../actions'
 import Row from "react-bootstrap/Row";
 import {Col} from "react-bootstrap";
 import Spinner from "react-bootstrap/Spinner";
 import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
 const MisMovies = () => {
     const counter = useSelector(state => state.counter);
-
-    console.log(counter.length);
+    console.log(counter);
     const dispatch = useDispatch();
 
-    return (
+        return (
+            <Row >
+                <Col className="App text-center">
+                    <h1 className="text-center mb-5 h1" style= {{ marginTop: '8%'}}>
+                        TUS PELÍCULAS FAVORITAS
+                    </h1>
 
-        <div className="App text-center">
-            <h1 className="text-center mt-5 mb-5 h1">
-                TUS PELÍCULAS FAVORITAS
-            </h1>
-            {(counter.length> 0) ? counter.map(function (peli) {
-                return(
-                    <Card bg="dark" text="white" style={{ width: '18rem' }}>
-                        <Card.Header>{peli.title}</Card.Header>
-                        <Card.Body>
-                            <Card.Title>{peli.title}</Card.Title>
-                            <Card.Text> {peli.overview}</Card.Text>
-                        </Card.Body>
-                    </Card>
-
-                )
-            }): (
-                <Col>
-                    <Spinner animation="grow" />
+                    <Col>
+                        {(counter.length> 0) ? counter.map( (movie) => (
+                            <Card bg="dark" text="white" style= {{ width: '50%', marginLeft:"24%" }}  className="mb-2" key={movie.id} movie={movie}>
+                                <Card.Header className="text-justify d-flex justify-content-between">
+                                    {movie.title}
+                                    <Button variant="outline-warning"  onClick={() => dispatch(allActions.counterActions.deleteMovie({"title":movie.title}))}>x</Button>
+                                </Card.Header>
+                            </Card>
+                        )):(
+                            <Col>
+                                <Spinner animation="grow" />
+                            </Col>
+                        )}
+                    </Col>
                 </Col>
-            )}
+            </Row>
+        )
+    };
 
-        </div>
-
-    )
-};
-
-export default MisMovies;
+        export default MisMovies;
 

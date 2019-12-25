@@ -1,10 +1,11 @@
 import React from 'react';
-// Elements BP4
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+
+// Store
+import store from "./store";
 
 
 // Router
@@ -22,16 +23,15 @@ import Search from "./pages/Search";
 import Movie from "./pages/movie/movie";
 import MisMovies from "./pages/my-movies";
 import Error404 from "./pages/error404";
-import rootReducer from './reducers'
+
 
 
 const App = () => {
 
-    let store = createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() );
+    // let store = createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() );
     return (
 
         <Provider store={store}>
-
             <Container  fluid={true} >
                 <Router>
                     <Row>

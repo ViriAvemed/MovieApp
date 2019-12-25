@@ -27,7 +27,7 @@ const NewMovies = () => {
     );
 
     return (
-        <Row>
+        <Row className="mt-5">
             <Row className="w-100">
                 <Col className="d-flex justify-content-center">
                     <h1 className="text-center mt-5 mb-5 h1">

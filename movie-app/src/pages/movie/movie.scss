@@ -1,3 +1,4 @@
+
 .movie {
   height: calc(100vh - 64px);
   background-repeat: no-repeat;
@@ -6,7 +7,7 @@
   line-height: 2;
   font-family: "Roboto Medium", sans-serif;
   text-align: justify;
-
+  margin-top: 12%;
 
 
   &_dark {
@@ -77,3 +78,4 @@
 
 
 }
+

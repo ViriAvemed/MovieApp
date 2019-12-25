@@ -8,6 +8,7 @@ import Spinner from "react-bootstrap/Spinner";
 
 const CarouselMovies = (props) => {
     const {movies} = props;
+
     if(movies.loading || !movies.result){
         return <Spinner animation="grow" />;
     }
@@ -20,8 +21,8 @@ const CarouselMovies = (props) => {
                 <Col className="d-flex justify-content-center p-0 m-0">
                     <Carousel  className="carousel-movies p-0 m-0">
                         {results.map(movie => (
-                            <Carousel.Item className="p-0 m-0">
-                                <Movie key={movie.id} movie={movie}/>
+                            <Carousel.Item className="p-0 m-0" key={movie.id}>
+                                <Movie  movie={movie}/>
                             </Carousel.Item>
                         ))}
                     </Carousel>
@@ -34,7 +35,7 @@ const CarouselMovies = (props) => {
 
 const Movie =(props)=> {
     const {
-        movie: {id, backdrop_path, title, overview}
+        movie: {id, backdrop_path, title}
     } = props;
 
     const backdropPath = `http://image.tmdb.org/t/p/original${backdrop_path}`;
