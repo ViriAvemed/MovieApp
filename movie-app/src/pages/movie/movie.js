@@ -9,8 +9,6 @@ import allActions from "../../actions";
 import { useDispatch} from 'react-redux'
 
 
-
-
 const Movie = () => {
 
     const {id} = useParams();
@@ -30,18 +28,18 @@ const RenderMovie =(props)=> {
     const {
         movieInfo: { backdrop_path, poster_path}
     } = props;
-    // const counter = useSelector(state => state.counter)
+
     const backdropPath =`http://image.tmdb.org/t/p/original${backdrop_path}`;
 
 
     return (
-        <Row className="movie" style={{backgroundImage: `url('${backdropPath}')`}}>
-            <div className="movie_dark">
+        <Row className="movie" style={{backgroundImage: `url('${backdropPath}')`, height:'100vh'}}>
+            <div className="movie_dark" style={{ paddingTop:'8%'}}>
                 <Row className="row-poster">
                     <Col md={{ span:5}}  className="movie_poster">
                         <PosterMovie image={poster_path}/>
                     </Col>
-                    <Col md={{ span:6}} className="movie_info mr-3">
+                    <Col md={{ span:6}} className="movie_info mr-3" >
                         <MovieInfo movieInfo={props.movieInfo}/>
                     </Col>
                 </Row>

@@ -1,3 +1,5 @@
+
+// Function to add a item
 const addMovie = (data) => {
     return {
         type: "ADD_MOVIE",
@@ -5,10 +7,11 @@ const addMovie = (data) => {
     }
 };
 
-const deleteMovie = (id) => {
+// Function to delete a item
+const deleteMovie = (name) => {
     return {
         type: "DELETE_MOVIE",
-        payload: id
+        data: name
     }
 };
 
@@ -16,3 +19,5 @@ export default {
     addMovie,
     deleteMovie
 };
+
+

@@ -1,14 +1,17 @@
-export const getStateLocalStorage = () => {
-    const moviesStorage = localStorage.getItem("movies");
+export const getStateLocalStorage = (favMovies) => {
+    const moviesStorage = localStorage.getItem("favMovies");
     if (moviesStorage === null ) {
-        return undefined;
+        return favMovies;
     } else {
         return JSON.parse(moviesStorage);
     }
 };
 
-export const setStateLocalStorage = movies => {
-    localStorage.setItem("movies", JSON.stringify(movies))
+export const setStateLocalStorage = (favMovies,empty) => {
+    if(favMovies.length>0 || empty){
+        console.log(favMovies);
+        localStorage.setItem("favMovies", JSON.stringify(favMovies))
+    }
 };
 
 

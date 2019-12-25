@@ -42,7 +42,7 @@ const Search=(props) => {
 
     return (
         <Row>
-            <Col className="Search">
+            <Col className="Search" style={{ paddingTop:'8%'}}>
                 <h1 className="mb-3 mt-4 h1 text-center">BUSCADOR DE PELÍCULAS</h1>
                 <Row>
                     <Col className="d-flex justify-content-center">

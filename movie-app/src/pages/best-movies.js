@@ -26,10 +26,10 @@ const BestMovies = () => {
     );
 
     return (
-        <Row className="mt-5">
+        <Row >
             <Row className="w-100">
                 <Col className="d-flex justify-content-center">
-                    <h1 className="text-center mt-5 mb-5 h1">
+                    <h1 className="text-center mb-5 h1" style= {{ marginTop: '10%'}}>
                         PELÍCULAS POPULARES
                     </h1>
                 </Col>
