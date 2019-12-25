@@ -4,11 +4,7 @@ import './Search.scss';
 import MovieCatalog from "../../components/MovieCatalog";
 import {URL_API, API} from "../../utils/constants";
 import queryString from "querystring";
-import {Row, Col, Button, CardColumns} from "react-bootstrap";
-import InputGroup from "react-bootstrap/InputGroup";
-import FormControl from "react-bootstrap/FormControl";
-
-
+import {Row, Col, Button, CardColumns, InputGroup, FormControl} from "react-bootstrap";
 
 const Search=(props) => {
     const {location, history } = props;
@@ -16,10 +12,8 @@ const Search=(props) => {
     const [searchValue, setSearchValue] = useState("");
 
     useEffect(()=> {
-
         (async () => {
 
-            // console.log(location.search);
             const searchValue = queryString.parse(location.search);
             const  s  = searchValue['?s'];
             const response = await fetch(
@@ -59,12 +53,12 @@ const Search=(props) => {
                     </Col>
 
                 </Row>
-                  <CardColumns style={{padding:'3% 10%'}} >
-                            {movieList.results && (
-                                <MovieCatalog movies={movieList}/>
-                            )}
-                  </CardColumns>
-             </Col>
+                <CardColumns style={{padding:'3% 10%'}} >
+                    {movieList.results && (
+                        <MovieCatalog movies={movieList}/>
+                    )}
+                </CardColumns>
+            </Col>
         </Row>
     )
 };

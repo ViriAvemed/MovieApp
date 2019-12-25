@@ -1,7 +1,6 @@
 import React, {useState, useEffect } from "react";
-import {Row, Col, CardColumns } from "react-bootstrap";
+import {Row, Col, CardColumns, Spinner } from "react-bootstrap";
 import { URL_API, API } from "../utils/constants";
-import Spinner from "react-bootstrap/Spinner";
 import MovieCatalog from "../components/MovieCatalog";
 import Pagination from '../components/Pagination';
 import Footer from "../components/Footer";

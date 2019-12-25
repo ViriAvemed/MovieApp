@@ -1,14 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './Carousel.scss';
-import Carousel from 'react-bootstrap/Carousel';
-import {Button, Col, Row} from "react-bootstrap";
-import Spinner from "react-bootstrap/Spinner";
+import {Button, Col, Row, Carousel, Spinner} from "react-bootstrap";
+
 
 
 const CarouselMovies = (props) => {
     const {movies} = props;
-
     if(movies.loading || !movies.result){
         return <Spinner animation="grow" />;
     }
@@ -30,7 +28,6 @@ const CarouselMovies = (props) => {
             </Row>
         </Col>
     )
-
 };
 
 const Movie =(props)=> {
@@ -43,9 +40,9 @@ const Movie =(props)=> {
     return (
         <div>
             <img style={{height:'100vh', width:'100vw'}}
-                className="d-block"
-                src={`${backdropPath}`}
-                alt=""
+                 className="d-block"
+                 src={`${backdropPath}`}
+                 alt=""
             />
             <Carousel.Caption className="carousel-caption">
                 <h1>"{title}"</h1>
@@ -54,8 +51,6 @@ const Movie =(props)=> {
                 </Link>
             </Carousel.Caption>
         </div>
-
-
     )
 
 };

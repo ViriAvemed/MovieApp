@@ -1,11 +1,7 @@
 import React from "react";
-import './NavBar.scss';
-import Navbar from 'react-bootstrap/Navbar'
-import Nav from "react-bootstrap/Nav";
 import { Link } from 'react-router-dom'
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-
+import './NavBar.scss';
+import {Navbar, Nav, Col, Row} from "react-bootstrap";
 
 const NavBar = () => {
     return (

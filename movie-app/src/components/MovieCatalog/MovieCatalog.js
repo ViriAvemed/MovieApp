@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './MovieCatalog.scss';
-import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
+import {Col, Card} from "react-bootstrap";
 
 
 const MovieCatalog =(props) => {

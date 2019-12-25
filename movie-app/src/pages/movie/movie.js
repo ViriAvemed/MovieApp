@@ -1,10 +1,9 @@
 import React from "react";
-import {Row, Col, Button} from "react-bootstrap";
+import {Row, Col, Button, Spinner} from "react-bootstrap";
 import { useParams } from 'react-router-dom';
 import useFetch from '../../hooks/fetch'
 import { URL_API, API } from "../../utils/constants";
 import './movie.scss';
-import Spinner from "react-bootstrap/Spinner";
 import allActions from "../../actions";
 import { useDispatch} from 'react-redux'
 
